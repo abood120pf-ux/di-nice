@@ -1,0 +1,825 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DJ NICE | الموسيقى والحفلات</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    color: white;
+    background: #10051c;
+}
+
+/* الخلفية الرئيسية - تم إصلاحها */
+.hero {
+    min-height: 100vh;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    background-color: #351052;
+    background-image:
+        linear-gradient(
+            rgba(20, 5, 35, 0.15),
+            rgba(20, 5, 35, 0.40)
+        ),
+        url("https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?auto=format&fit=crop&w=1920&q=85" (https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?auto=format&fit=crop&w=1920&q=85));
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.bg-image {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.85;
+    z-index: 0;
+}
+
+.overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background: linear-gradient(
+        rgba(15, 5, 30, 0.10),
+        rgba(15, 5, 30, 0.35)
+    );
+    pointer-events: none;
+}
+
+header, main {
+    position: relative;
+    z-index: 2;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 25px 8%;
+    border-bottom: 1px solid #ffffff40;
+    background: rgba(15, 5, 30, 0.20);
+}
+
+.logo {
+    direction: ltr;
+    font-size: 28px;
+    font-weight: bold;
+    color: #e2b8ff;
+    text-shadow: 0 0 12px #a855f7;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    margin: 8px;
+    transition: 0.3s;
+    font-weight: bold;
+}
+
+nav a:hover {
+    color: #e2b8ff;
+}
+
+main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 45px 20px;
+}
+
+h1 {
+    direction: ltr;
+    font-size: clamp(60px, 12vw, 110px);
+    text-shadow: 0 0 25px #a855f7;
+    margin-bottom: 15px;
+}
+
+h1 span {
+    color: #e2b8ff;
+}
+
+h2 {
+    margin-bottom: 20px;
+}
+
+p {
+    max-width: 600px;
+    line-height: 2;
+    color: #eee2ff;
+    margin-bottom: 25px;
+}
+
+.btn {
+    display: inline-block;
+    padding: 14px 25px;
+    margin: 6px;
+    border-radius: 8px;
+    background: #a855f7;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn:hover {
+    background: #7e22ce;
+    transform: translateY(-3px);
+}
+
+/* الأقسام */
+section.services {
+    position: relative;
+    z-index: 2;
+    padding: 60px 20px;
+    background: #10051c;
+    text-align: center;
+}
+
+.services h2 {
+    color: #d8a4ff;
+    font-size: 32px;
+}
+
+.section-intro {
+    margin: 0 auto 35px;
+}
+
+/* من نحن */
+.about-box {
+    display: flex;
+    align-items: center;
+    gap: 35px;
+    max-width: 1100px;
+    margin: 30px auto 0;
+    text-align: right;
+}
+
+.about-box img {
+    width: 48%;
+    height: 350px;
+    object-fit: cover;
+    border-radius: 15px;
+    box-shadow: 0 0 25px #a855f730;
+}
+
+.about-text {
+    flex: 1;
+}
+
+.about-text h3 {
+    color: #d8a4ff;
+    font-size: 25px;
+    margin-bottom: 15px;
+}
+
+.about-text p {
+    margin-bottom: 12px;
+}
+
+/* بطاقات الخدمات */
+.services-grid {
+    max-width: 1150px;
+    margin: 35px auto 0;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 22px;
+}
+
+.service-card {
+    background: #1a0b2b;
+    border: 1px solid #ffffff18;
+    border-radius: 14px;
+    overflow: hidden;
+    text-align: right;
+    transition: 0.3s;
+}
+
+.service-card:hover {
+    transform: translateY(-7px);
+    border-color: #a855f7;
+    box-shadow: 0 10px 25px #00000050;
+}
+
+.service-card img {
+    width: 100%;
+    height: 210px;
+    object-fit: cover;
+    display: block;
+}
+
+.service-content {
+    padding: 22px;
+}
+
+.service-content h3 {
+    color: #d8a4ff;
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.service-content p {
+    font-size: 14px;
+    margin-bottom: 0;
+}
+
+/* معرض الصور */
+.gallery {max-width: 1150px;
+    margin: 35px auto 0;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+}
+
+.gallery img {
+    width: 100%;
+    height: 250px;
+    border-radius: 12px;
+    object-fit: cover;
+    transition: 0.3s;
+}
+
+.gallery img:hover {
+    transform: scale(1.025);
+}
+
+/* الحجز */
+.booking-banner {
+    position: relative;
+    z-index: 2;
+    padding: 60px 20px;
+    text-align: center;
+    background-color: #351052;
+    background-image:
+        linear-gradient(
+            rgba(16, 5, 28, 0.45),
+            rgba(16, 5, 28, 0.65)
+        ),
+        url("https://images.unsplash.com/photo-1506157786151-b8491531f063?auto=format&fit=crop&w=1500&q=80" (https://images.unsplash.com/photo-1506157786151-b8491531f063?auto=format&fit=crop&w=1500&q=80));
+    background-position: center;
+    background-size: cover;
+}
+
+.booking-banner h2 {
+    color: #e2b8ff;
+    font-size: 32px;
+}
+
+/* التواصل */
+.contact-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 35px;
+    max-width: 1100px;
+    margin: 30px auto 0;
+    text-align: right;
+}
+
+.contact-photo {
+    width: 100%;
+    height: 280px;
+    object-fit: cover;
+    border-radius: 14px;
+    margin-bottom: 20px;
+}
+
+.contact-card {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    background: #1a0b2b;
+    border: 1px solid #ffffff18;
+    padding: 16px;
+    border-radius: 12px;
+    margin-bottom: 14px;
+}
+
+.contact-icon {
+    width: 48px;
+    height: 48px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #a855f730;
+    border-radius: 12px;
+    font-size: 24px;
+}
+
+.contact-card small {
+    display: block;
+    color: #cbb9df;
+    margin-bottom: 5px;
+}
+
+.contact-card a {
+    color: white;
+    text-decoration: none;
+    overflow-wrap: anywhere;
+}
+
+.contact-card a:hover {
+    color: #d8a4ff;
+}
+
+.contact-form {
+    background: #1a0b2b;
+    border: 1px solid #ffffff18;
+    padding: 25px;
+    border-radius: 14px;
+}
+
+.contact-form h3 {
+    color: #d8a4ff;
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.contact-form input,
+.contact-form select,
+.contact-form textarea {
+    width: 100%;
+    padding: 13px;
+    margin-bottom: 14px;
+    background: #10051c;
+    color: white;
+    border: 1px solid #ffffff25;
+    border-radius: 8px;
+    font-family: inherit;
+    font-size: 14px;
+}
+
+.contact-form select option {
+    background: #10051c;
+    color: white;
+}
+
+.contact-form textarea {
+    height: 120px;
+    resize: vertical;
+}
+
+.contact-form input:focus,
+.contact-form select:focus,
+.contact-form textarea:focus {
+    outline: 1px solid #a855f7;
+}
+
+.contact-form .btn {
+    width: 100%;
+    margin: 0;
+}
+
+/* أسفل الموقع */
+footer {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    padding: 25px 20px;
+    background: #080711;
+    color: #cbb9df;
+}
+
+footer p {
+    margin: 8px auto 0;
+    font-size: 13px;
+}
+
+/* توافق مع الجوال */
+@media (max-width: 800px) {
+    .services-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .about-box {
+        flex-direction: column;
+    }
+
+    .about-box img {
+        width: 100%;
+        height: 300px;
+    }
+
+    .contact-layout {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 600px) {
+    header {
+        flex-direction: column;
+        gap: 15px;
+        padding: 20px 5%;
+    }
+
+    nav {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 5px;
+    }
+
+    nav a {
+        margin: 5px;
+        font-size: 14px;
+    }
+
+    .services-grid,
+    .gallery {
+        grid-template-columns: 1fr;
+    }
+
+    .gallery img {
+        height: 230px;
+    }
+
+    .services h2,
+    .booking-banner h2 {
+        font-size: 27px;
+    }
+
+    .contact-form {
+        padding: 18px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- الرئيسية -->
+<div class="hero" id="home">
+
+    <img
+        class="bg-image"
+        src="https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?auto=format&fit=crop&w=1920&q=85" (https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?auto=format&fit=crop&w=1920&q=85)
+        alt="أجواء DJ NICE الموسيقية"
+        onerror="this.style.display='none'"
+    >
+
+    <div class="overlay"></div>
+
+    <header>
+        <div class="logo">DJ NICE</div>
+        <nav>
+            <a href="#home">الرئيسية</a>
+            <a href="#about">من نحن</a>
+            <a href="#services">خدماتنا</a>
+            <a href="#gallery">معرض الصور</a>
+            <a href="#contact">التواصل</a>
+        </nav>
+    </header>
+
+    <main>
+        <h1>DJ <span>NICE</span></h1>
+
+        <h2>نصنع أجواءً لا تُنسى 🎧</h2>
+
+        <p>
+            فرقة DJ NICE للموسيقى والحفلات والمناسبات.
+            أجواء مميزة، موسيقى رائعة، ولحظات تستحق أن تُعاش.
+        </p>
+
+        <div>
+            <a href="#services" class="btn">خدماتنا</a>
+            <a href="#contact" class="btn">احجز الآن</a>
+        </div>
+    </main>
+</div>
+
+<!-- من نحن -->
+<section class="services" id="about">
+    <h2>من نحن؟</h2>
+
+    <div class="about-box">
+        <img
+            src="https://images.unsplash.com/photo-1501386761578-eac5c94b800a?auto=format&fit=crop&w=1000&q=80" (https://images.unsplash.com/photo-1501386761578-eac5c94b800a?auto=format&fit=crop&w=1000&q=80)
+            alt="أجواء حفلات وموسيقى"
+            loading="lazy"
+        >
+
+        <div class="about-text">
+            <h3>أهلًا بكم في DJ NICE</h3>
+
+            <p>
+                نحن DJ NICE، نهتم بصناعة أجواء ترفيهية مميزة
+                تناسب مختلف المناسبات والاحتفالات.
+            </p>
+
+            <p>
+                نقدم خدمات الموسيقى والدي جي، وتجهيز أجواء الحفلات،
+                والإضاءة والصوت وفقًا لطبيعة المناسبة واحتياجات العميل.
+            </p>
+
+            <p>
+                هدفنا أن تكون مناسبتك تجربة جميلة مليئة بالحماس
+                والذكريات التي تبقى في الأذهان.
+            </p>
+
+            <a href="#contact" class="btn">تواصل معنا</a>
+        </div>
+    </div>
+</section>
+
+<!-- خدماتنا -->
+<section class="services" id="services">
+    <h2>خدماتنا</h2>
+
+    <p class="section-intro">
+        نقدم مجموعة من خدمات الموسيقى والترفيه وتجهيز أجواء المناسبات،
+        لتختار ما يناسب احتفالك.
+    </p>
+
+    <div class="services-grid">
+
+        <div class="service-card">
+            <img
+                src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?auto=format&fit=crop&w=800&q=80" (https://images.unsplash.com/photo-1511795409834-ef04bbd61622?auto=format&fit=crop&w=800&q=80)
+                alt="حفلات الزفاف"
+                loading="lazy"
+            >
+            <div class="service-content">
+                <h3>💍 الأعراس والمناسبات</h3>
+                <p>
+                    أجواء موسيقية تناسب حفلات الزفاف والمناسبات العائلية،
+                    مع الاهتمام بطابع المناسبة وذوق أصحابها.
+                </p>
+            </div>
+        </div>
+
+        <div class="service-card">
+            <img
+                src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&w=800&q=80" (https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&w=800&q=80)
+                alt="حفلات وأعياد ميلاد"
+                loading="lazy"
+            >
+            <div class="service-content">
+                <h3>🎉 أعياد الميلاد والحفلات</h3>
+                <p>
+                    موسيقى وأجواء ممتعة لحفلات أعياد الميلاد،
+                    والتجمعات الخاصة والاحتفالات المختلفة.
+                </p>
+            </div>
+        </div>
+
+        <div class="service-card">
+            <img
+                src="https://images.unsplash.com/photo-1506157786151-b8491531f063?auto=format&fit=crop&w=800&q=80" (https://images.unsplash.com/photo-1506157786151-b8491531f063?auto=format&fit=crop&w=800&q=80)
+                alt="الفعاليات والافتتاحات"
+                loading="lazy"
+            >
+            <div class="service-content">
+                <h3>🎤 الفعاليات والافتتاحات</h3>
+                <p>
+                    إضافة أجواء موسيقية للفعاليات والافتتاحات
+                    والتجمعات التي تحتاج إلى تجربة ترفيهية مميزة.
+                </p>
+            </div>
+        </div>
+
+        <div class="service-card">
+            <img
+                src="https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?auto=format&fit=crop&w=800&q=80" (https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?auto=format&fit=crop&w=800&q=80)
+                alt="معدات وأداء DJ"
+                loading="lazy"
+            >
+            <div class="service-content">
+                <h3>🎧 الدي جي والموسيقى</h3>
+                <p>
+                    اختيار الموسيقى بما يتناسب مع نوع المناسبة
+                    والمزاج المطلوب لإضفاء الحيوية على الحفل.
+                </p>
+            </div>
+        </div>
+
+        <div class="service-card">
+            <imgsrc="https://images.unsplash.com/photo-1503095396549-807759245b35?auto=format&fit=crop&w=800&q=80" (https://images.unsplash.com/photo-1503095396549-807759245b35?auto=format&fit=crop&w=800&q=80)
+                alt="إضاءة المسرح"
+                loading="lazy"
+            >
+            <div class="service-content">
+                <h3>💡 الإضاءة والمؤثرات</h3>
+                <p>
+                    إضاءة ملونة ولمسات بصرية تضيف طابعًا جذابًا
+                    إلى مكان الحفل وتكمل الأجواء الموسيقية.
+                </p>
+            </div>
+        </div>
+
+        <div class="service-card">
+            <img
+                src="https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?auto=format&fit=crop&w=800&q=80" (https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?auto=format&fit=crop&w=800&q=80)
+                alt="أجهزة الصوت"
+                loading="lazy"
+            >
+            <div class="service-content">
+                <h3>🔊 تجهيزات الصوت</h3>
+                <p>
+                    حلول وتجهيزات صوتية تُختار وفقًا لطبيعة المكان
+                    واحتياجات المناسبة.
+                </p>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- معرض الصور -->
+<section class="services" id="gallery">
+    <h2>معرض الصور 📸</h2>
+
+    <p class="section-intro">
+        أجواء الموسيقى والحفلات والإضاءة التي تلهم تجربتنا.
+    </p>
+
+    <div class="gallery">
+        <img
+            src="https://images.unsplash.com/photo-1459749411175-04bf5292ceea?auto=format&fit=crop&w=900&q=80" (https://images.unsplash.com/photo-1459749411175-04bf5292ceea?auto=format&fit=crop&w=900&q=80)
+            alt="حفلة موسيقية"
+            loading="lazy"
+        >
+
+        <img
+            src="https://images.unsplash.com/photo-1501386761578-eac5c94b800a?auto=format&fit=crop&w=900&q=80" (https://images.unsplash.com/photo-1501386761578-eac5c94b800a?auto=format&fit=crop&w=900&q=80)
+            alt="جمهور الحفل"
+            loading="lazy"
+        >
+
+        <img
+            src="https://images.unsplash.com/photo-1506157786151-b8491531f063?auto=format&fit=crop&w=900&q=80" (https://images.unsplash.com/photo-1506157786151-b8491531f063?auto=format&fit=crop&w=900&q=80)
+            alt="إضاءة المسرح"
+            loading="lazy"
+        >
+    </div>
+</section>
+
+<!-- دعوة للحجز -->
+<section class="booking-banner">
+    <h2>هل تخطط لمناسبتك القادمة؟</h2>
+
+    <p style="margin: 0 auto 20px;">
+        دع DJ NICE يساعدك في إعداد أجواء تناسب مناسبتك.
+        تواصل معنا لمناقشة التفاصيل.
+    </p>
+
+    <a href="#contact" class="btn">احجز مناسبتك الآن</a>
+</section>
+
+<!-- التواصل -->
+<section class="services" id="contact">
+    <h2>تواصل معنا</h2>
+
+    <p class="section-intro">
+        يسعدنا استقبال استفساراتكم وطلبات الحجز.
+        تواصل معنا عبر الهاتف أو واتساب أو البريد الإلكتروني.
+    </p>
+
+    <div class="contact-layout">
+
+        <div>
+            <img
+                class="contact-photo"
+                src="https://images.unsplash.com/photo-1524368535928-5b5e00ddc76b?auto=format&fit=crop&w=1000&q=80" (https://images.unsplash.com/photo-1524368535928-5b5e00ddc76b?auto=format&fit=crop&w=1000&q=80)
+                alt="جمهور وأجواء حفلات"
+                loading="lazy"
+            >
+
+            <div class="contact-card">
+                <div class="contact-icon">☎️</div>
+                <div>
+                    <small>رقم الهاتف</small>
+                    <a href="tel:+967770000000">
+                        <strong dir="ltr">+967 770 000 000</strong>
+                    </a>
+                </div>
+            </div>
+
+            <div class="contact-card">
+                <div class="contact-icon">💬</div>
+                <div>
+                    <small>واتساب للحجز</small>
+                    <a href="https://wa.me/967770000000" (https://wa.me/967770000000)
+                       target="_blank" rel="noopener">
+                        <strong dir="ltr">+967 770 000 000</strong>
+                    </a>
+                </div>
+            </div>
+
+            <div class="contact-card">
+                <div class="contact-icon">✉️</div>
+                <div>
+                    <small>البريد الإلكتروني</small>
+                    <a href="mailto:hello@djnice.example">
+                        <strong dir="ltr">hello@djnice.example</strong>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <form class="contact-form" id="contactForm">
+            <h3>أرسل طلب حجز</h3>
+
+            <input
+                type="text"
+                id="customerName"
+                placeholder="الاسم الكامل"
+                required
+            >
+
+            <inputtype="email"
+                id="customerEmail"
+                placeholder="البريد الإلكتروني"
+                required
+            >
+
+            <select id="eventType" required>
+                <option value="">اختر نوع المناسبة</option>
+                <option>حفل زفاف</option>
+                <option>عيد ميلاد</option>
+                <option>حفلة خاصة</option>
+                <option>فعالية أو افتتاح</option>
+                <option>مناسبة أخرى</option>
+            </select>
+
+            <input
+                type="date"
+                id="eventDate"
+                aria-label="تاريخ المناسبة"
+            >
+
+            <textarea
+                id="customerMessage"
+                placeholder="اكتب تفاصيل مناسبتك هنا..."
+                required
+            ></textarea>
+
+            <button type="submit" class="btn">
+                إرسال الطلب عبر واتساب
+            </button>
+
+            <p style="font-size: 12px; margin: 12px 0 0;">
+                سيتم فتح واتساب مع تفاصيل طلبك لتتمكن من إرساله.
+            </p>
+        </form>
+
+    </div>
+</section>
+
+<!-- تذييل الموقع -->
+<footer>
+    © 2026 DJ NICE - جميع الحقوق محفوظة
+    <p>الموسيقى، الأجواء، والذكريات الجميلة 🎧</p>
+</footer>
+
+<script>
+document.getElementById("contactForm").addEventListener("submit", function(event) {
+    event.preventDefault();
+
+    // غيّر الرقم إلى رقم واتساب الحقيقي مع مفتاح الدولة
+    // من دون علامة + أو مسافات
+    const whatsappNumber = "967770000000";
+
+    const name = document.getElementById("customerName").value.trim();
+    const email = document.getElementById("customerEmail").value.trim();
+    const eventType = document.getElementById("eventType").value;
+    const eventDate = document.getElementById("eventDate").value || "لم يحدد";
+    const message = document.getElementById("customerMessage").value.trim();
+
+    const bookingMessage =
+        "مرحباً DJ NICE، أريد الاستفسار عن حجز مناسبة.\n\n" +
+        "الاسم: " + name + "\n" +
+        "البريد الإلكتروني: " + email + "\n" +
+        "نوع المناسبة: " + eventType + "\n" +
+        "التاريخ: " + eventDate + "\n" +
+        "التفاصيل: " + message;
+
+    const whatsappURL =
+        "https://wa.me/" (https://wa.me/) + whatsappNumber +
+        "?text=" + encodeURIComponent(bookingMessage);
+
+    window.open(whatsappURL, "_blank", "noopener");
+});
+</script>
+
+</body>
+</html>
